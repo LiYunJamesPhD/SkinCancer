@@ -67,7 +67,7 @@ python main.py --runMode=inference --postProcess --seed=10
 This work completes skin cancer classification on multiple deep neural network models in two training paradigms: training from scratch and finetuning. Inspired by multimodal object detection [1], to improve classification performance, our post-process technique is score fusion, which determines predicted classes through multiple probabilities. In particular, the final predictions of images are proportional to the products of each classification confidence and class priors. The following table depicts distinct metrics on multiple deep neural network models.
 
 |       |               Evaluation Metrics             |
-| :--------------------------------------------------: |         
+| :---: | :------------------------------------------: |         
 | Model | Classification Accuracy | Recall | Precision |
 | :---: | :---------------------: | :----: | :-------: |
 #| Resnet-50 (Scratch) |    | 283   |
