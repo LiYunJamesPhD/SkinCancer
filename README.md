@@ -19,11 +19,15 @@ pip install torcheval
 pip install gdown
 ```
 
-Alternatively, use the following command to install all dependencies:
+Alternatively, use the following command to create an environment with all dependencies:
 
 ```bash
-conda install --yes --file requirements.txt
+conda env create -f environment.yml
 ```
 
 ## Usage
+
+
+
+
 
