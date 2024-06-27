@@ -27,7 +27,35 @@ conda env create -f environment.yml
 
 ## Usage
 
+### Model Training
+Use the following command for model training:
 
+```bash
+python main.py --lr=0.05 --arch=resnet50 --epochs=200 --runMode=training 
+               --trainingMode=scratch --makeDir --seed=10
+```
 
+Use the following commands for model finetuning (transfer learning):
+
+```bash
+python main.py --lr=0.05 --arch=resnet50 --epochs=200 --runMode=training 
+               --trainingMode=finetune --pretrained --makeDir --seed=10
+
+python main.py --lr=0.05 --arch=vit_b_16 --epochs=200 --runMode=training
+               --trainingMode=finetune --makeDir --seed=10
+```
+
+### Model Inference
+Use the following command for model inference:
+
+```bash
+python main.py --runMode=inference --trainingMode=[scratch or finetune] --seed=10
+```
+
+Use the following command for a post process technique:
+
+```bash
+python main.py --runMode=inference --postProcess --seed=10
+```
 
 
