@@ -62,4 +62,18 @@ Use the following command for a post process technique:
 python main.py --runMode=inference --postProcess --seed=10
 ```
 
+## Experimentation
+
+s work completes skin cancer classification on multiple deep neural network models in two training paradigms: training from scratch and finetuning. Inspired by multimodal object detection [1], to improve classification performance, our post-process technique is score fusion, which determines predicted classes through multiple probabilities. In particular, the final predictions of images are proportional to the products of each classification confidence and class priors.
+
+| Attempt | #1    | #2    |
+| :---:   | :---: | :---: |
+| Seconds | 301   | 283   |
+
+
+
+## Reference
+
+[1] [Multimodal Object Detection via Probabilistic Ensembling](https://arxiv.org/pdf/2104.02904) (ECCV 2022)
+
 
