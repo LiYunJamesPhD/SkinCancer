@@ -38,9 +38,13 @@ python main.py --lr=0.05 --arch=resnet50 --epochs=200 --runMode=training
 Use the following commands for model finetuning (transfer learning):
 
 ```bash
-python main.py --lr=0.05 --arch=resnet50 --epochs=200 --runMode=training 
+python main.py --lr=0.05 --arch=resnet50 --epochs=200 --runMode=training
                --trainingMode=finetune --pretrained --makeDir --seed=10
+```
 
+or 
+
+```bash
 python main.py --lr=0.05 --arch=vit_b_16 --epochs=200 --runMode=training
                --trainingMode=finetune --makeDir --seed=10
 ```
