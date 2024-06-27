@@ -69,14 +69,16 @@ This work completes skin cancer classification on multiple deep neural network m
 |       | Evaluation Metric - 1 | Evaluation Metric - 2 | Evaluation Metric - 3 |
 | :---: | :---------------------: | :----: | :--------:|        
 | Model | Classification Accuracy | Recall | Precision |
-| Resnet-50 (Scratch) |  88.90%   | 0.890  |   0.888   |
-| Resnet-50 (Finetune) |  88.20%  | 0.930  |   0.849   |
-| ViT-b-16  (Finetune) |  89.90%  | 0.896  |   0.901   |
-|     Score Fusion     |  89.65%  | 0.933  |   0.870   |  
+| Resnet-50 (Scratch) |  88.90 %  | 0.890  |   0.888   |
+| Resnet-50 (Finetune) | 88.20 %  | 0.930  |   0.849   |
+| ViT-b-16  (Finetune) | 89.90 %  | 0.896  |   0.901   |
+|     Score Fusion     | 89.65 %  | 0.933  |   0.870   |  
 
 
 Analysis:<br />
-We note that the finetuned model has 
+We note that the finetuned model has lower classification accuracy and precision than the model trained from scratch on Res
+net-50. Due to the nature of transfer learning in which the tuned model only finetunes the last linear layer and freezes the rest of the layers, the model has a domain gap between skin cancer images and Imagenet images used for pre-training and causes lower accuracy and precision.
+
 
 
 ## Reference
