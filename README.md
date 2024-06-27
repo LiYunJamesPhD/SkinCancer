@@ -69,12 +69,11 @@ This work completes skin cancer classification on multiple deep neural network m
 |       | Evaluation Metric - 1 | Evaluation Metric - 2 | Evaluation Metric - 3 |
 | :---: | :---------------------: | :----: | :--------:|        
 | Model | Classification Accuracy | Recall | Precision |
-| :---: | :---------------------: | :----: | :-------: |
 | Resnet-50 (Scratch) |     a     |  283   |     c     |
-| :---: | :---------------------: | :----: | :-------: |
 | Resnet-50 (Finetune) |     a    |  283   |     c     |
-| :---: | :---------------------: | :----: | :-------: |
- 
+| ViT-b-16  (Finetune) |     a    |  283   |     c     |
+
+Analysis:<br />
 
 
 
