@@ -11,7 +11,19 @@ conda create -n tristar python=3.11
 conda activate tristar
 ```
 
-This implementation requires python>=3.11, as well as pytorch>=2.0.1 with cuda=11.8 and torchvision>=0.15.2. Please install PyTorch and TorchVision dependencies properly via [here](https://pytorch.org/get-started/locally/)
+This implementation requires python>=3.11, as well as pytorch>=2.0.1 with cuda=11.8 and torchvision>=0.15.2. Please install PyTorch and TorchVision dependencies properly via [here](https://pytorch.org/get-started/locally/). Then, install all required dependencies through:
 
+```bash
+pip install timm
+pip install torcheval
+pip install gdown
+```
 
+Alternatively, use the following command to install all dependencies:
+
+```bash
+conda install --yes --file requirements.txt
+```
+
+## Usage
 
