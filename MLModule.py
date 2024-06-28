@@ -54,7 +54,8 @@ class BaseClass(ABC):
 
 
 @BaseClass.register_subclass('classification')
-class ScratchClass(BaseClass):
+class ImageClassifier(BaseClass):
+    """A class to an image classification pipeline"""
     def __init__(self, args, device):
 
         self.args = args

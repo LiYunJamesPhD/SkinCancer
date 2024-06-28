@@ -1,6 +1,5 @@
 import os
 import argparse
-# import numpy as np
 from pathlib import Path
 
 import torch
@@ -10,6 +9,13 @@ from MLModule import BaseClass
 
 
 def load_argument():
+    """ Initialize required arguments for this work.
+
+        Args:
+        
+        Outputs:
+            parser : an argument object 
+    """
 
     parser = argparse.ArgumentParser('TriStarAI-Skin Cancer Classification', add_help=False)
     # model training parameters
@@ -41,8 +47,7 @@ def main(args):
     # ======= setup seed and GPU =====
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     torch.manual_seed(args.seed)
-    # np.random.seed(args.seed)
-
+    
     cudnn.benchmark = True
 
     # ======= ML pipeline (classification) =====

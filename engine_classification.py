@@ -9,6 +9,20 @@ import util as UT
 
 
 def train_one_epoch(model, train_loader, loss, optimizer, epoch, args, device):
+    """ Perfom model training in one epoch.
+
+        Args:
+            model : a deep neural network model
+            train_loader : a dataloader to training data
+            loss : a loss function to difference between ground truth and predictions
+            optimizer : an optimizer to weight updates
+            epoch : an epoch number
+            args : an argument object
+            device : a device to GPU or CPU
+        
+        Outputs:
+            {k: meter.global_avg for k, meter in metric_logger.meters.items()} : a metric object with training loss
+    """
 
     model.train(True)
 
@@ -45,7 +59,18 @@ def train_one_epoch(model, train_loader, loss, optimizer, epoch, args, device):
 
 @torch.no_grad()
 def evaluate(model, val_loader, loss, device):
+    """ Perfom model inference in one epoch.
 
+        Args:
+            model : a deep neural network model
+            val_loader : a dataloader to test data
+            loss : a loss function to difference between ground truth and predictions 
+            device : a device to GPU or CPU
+        
+        Outputs:
+            test_status : a metric object with test loss, recall, acc_1, and precision
+    """
+    
     metric_logger = UT.MetricLogger(delimiter="  ")
     header = 'Test:'
     metric_precision = BinaryPrecision()
@@ -87,7 +112,18 @@ def evaluate(model, val_loader, loss, device):
 
 @torch.no_grad()
 def evaluate_fused(m1, m2, val_loader, device):
+    """ Perfom model inference using score fusion in one epoch
 
+        Args:
+            m1 : first deep neural network model
+            m2 : second deep neural network model
+            val_loader : a dataloader to test data
+            device : a device to GPU or CPU
+        
+        Outputs:
+            test_status : a metric object with recall, acc_1, and precision
+    """
+    
     metric_logger = UT.MetricLogger(delimiter="  ")
     header = 'Test:'
     metric_precision = BinaryPrecision()

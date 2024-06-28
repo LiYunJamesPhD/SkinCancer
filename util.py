@@ -147,7 +147,15 @@ class MetricLogger(object):
 
 
 def Gdown_and_unzip(args, file_name):
-    
+    """ Download data from Google drive and unzip it
+
+        Args:
+            args : an argument object with required arguments 
+            file_name : a file name to an output directory
+         
+        Outputs:
+    """
+     
     # example link: https://drive.google.com/file/d/1yc3LSiviVfrnyluHClZfmo4tjFGCxe_E/view?usp=sharing 
     link_split = args.datasetLink.split('/')
     download_url = "https://drive.google.com/uc?id=" + link_split[5]
@@ -162,6 +170,16 @@ def Gdown_and_unzip(args, file_name):
 
 
 def get_model(input_arch_name, num_classes, pretrained=None):
+    """ Construct a deep neural netwokr model
+
+        Args:
+            input_arch_name : name to a model architecture
+            num_classes : number to target classes
+            pretrained : a bool value to pre-trained weight loading
+         
+        Outputs:
+            model : a deep neural network model
+    """
     
     if input_arch_name.startswith('resnet'):
         return resnet.load_resnet_model(input_arch_name, pretrained=pretrained, num_classes=num_classes)
@@ -180,10 +198,30 @@ def get_model(input_arch_name, num_classes, pretrained=None):
 
 
 def load_checkpoint(path, model):
+    """ Load pre-trained weights
+
+        Args:
+            path : path to pre-trained weights
+            model : a deep neural network model
+            
+        Outputs:
+    """
+    
     model.load_state_dict(torch.load(path, map_location="cpu")['state_dict'])
 
 
 def save_checkpoint(model_dir, state, ignore_tensors=None, file_name=''):
+    """ Save model's weight
+
+        Args:
+            model_dir : a base path to a directory
+            state : a dictionary with model's weight and essential information
+            ignore_tensors : variable to ignore tensors
+            file_name : a name to saved file
+            
+        Outputs:
+    """
+    
     checkpoint_fn = os.path.join(model_dir, file_name)
     if ignore_tensors is not None:
         for p in ignore_tensors.values():
@@ -193,7 +231,16 @@ def save_checkpoint(model_dir, state, ignore_tensors=None, file_name=''):
 
 
 def accuracy(fused_predict, labels):
+    """ Compute accuracy given predictions and targets
 
+        Args:
+            fused_predict : a prediction to score fusion
+            labels : targets (ground truth)
+            
+        Outputs:
+            classification accuracy in percentage
+    """
+    
     batch_size = fused_predict.size()[0]
     correct = 0
     for p, t in zip(fused_predict, labels):
@@ -202,10 +249,20 @@ def accuracy(fused_predict, labels):
     return (correct / batch_size) * 100.0
 
 
-"""
-Inspired by score fusion in the paper https://arxiv.org/pdf/2104.02904
-"""
 def Prob_Fusion(pred_1_logits, pred_2_logits, GT):
+    """ Proferm score fusion given two predictions and targets
+
+        Inspired by score fusion in the paper https://arxiv.org/pdf/2104.02904
+
+        Args:
+            pred_1_logits : a prediction to 1st classifier
+            pred_2_logits : a prediction to 2nd classifier
+            GT : targets (ground truth)
+            
+        Outputs:
+            fused_pred : final predictions
+    """
+
     prob_1 = torch.nn.functional.softmax(pred_1_logits, dim=1)
     prob_2 = torch.nn.functional.softmax(pred_2_logits, dim=1)
 
