@@ -76,8 +76,7 @@ This work completes skin cancer classification on multiple deep neural network m
 
 
 Analysis:<br />
-We note that the finetuned model has lower classification accuracy and precision than the model trained from scratch on Res
-net-50. Due to the nature of transfer learning in which the tuned model only finetunes the last linear layer and freezes the rest of the layers, the model has a domain gap between skin cancer images and Imagenet images used for pre-training and causes lower accuracy and precision.
+We note that the finetuned model has lower classification accuracy and precision than the model trained from scratch on Resnet-50. Due to the nature of transfer learning in which the tuned model only finetunes the last linear layer and freezes the rest of the layers, the model has a domain gap between skin cancer images and Imagenet images used for pre-training and causes lower accuracy and precision.
 
 In contrast to the pre-trained Resnet-50 model (i.e., training from scratch), fusing multiple predictions from multiple models reaches higher classification accuracy and recall and comparable precision than the pre-trained model. Although the fused technique has low precision, high recall is crucial because we would like to ask models to classify all given Malignant skin images as skin cancer in medical applications.
 
