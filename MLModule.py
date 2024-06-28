@@ -127,6 +127,7 @@ class ImageClassifier(BaseClass):
         optimizer = torch.optim.SGD(self.model.parameters(), lr=self.args.lr,
                                  momentum=self.args.momentum, weight_decay=self.args.weight_decay)
 
+        start_time = time.time()
         best_test_acc = 0
         for epoch in range(1, self.args.epochs + 1):
             # train function
